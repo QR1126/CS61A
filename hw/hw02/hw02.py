@@ -141,7 +141,13 @@ def count_coins(total):
     True
     """
     "*** YOUR CODE HERE ***"
-
+    def dfs(coin, cur):
+        if coin == None or cur + coin > total:
+            return 0
+        if coin + cur == total:
+            return 1
+        return dfs(coin, cur + coin) + dfs(next_largest_coin(coin), cur)
+    return dfs(1, 0)
 
 from operator import sub, mul
 
