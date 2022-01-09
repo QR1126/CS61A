@@ -67,6 +67,7 @@ def pingpong(n):
     "*** YOUR CODE HERE ***"
 
 
+
 def missing_digits(n):
     """Given a number a that is in sorted, increasing order,
     return the number of missing digits in n. A missing digit is
@@ -95,6 +96,15 @@ def missing_digits(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n < 100:
+        if n < 10:
+            return 0
+        elif (n % 10 - (n // 10 % 10)) != 1 and (n % 10 - (n // 10 % 10)) != 0:
+            return n % 10 - n // 10 % 10 - 1
+        else: return 0
+    else:
+        return missing_digits(n // 10) + missing_digits(n % 100)
+
 
 
 def next_largest_coin(coin):
