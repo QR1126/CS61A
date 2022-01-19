@@ -44,11 +44,13 @@ def planet(size):
     """Construct a planet of some size."""
     assert size > 0
     "*** YOUR CODE HERE ***"
+    return ['planet', size]
 
 def size(w):
     """Select the size of a planet."""
     assert is_planet(w), 'must call size on a planet'
     "*** YOUR CODE HERE ***"
+    return w[1]
 
 def is_planet(w):
     """Whether w is a planet."""
@@ -105,6 +107,9 @@ def balanced(m):
     True
     """
     "*** YOUR CODE HERE ***"
+    if is_planet(m):
+        return True
+    return length(left(m)) * total_weight(end(left(m))) == length(right(m)) * total_weight(end(right(m))) and balanced(end(left(m))) and balanced(end(right(m)))
 
 def totals_tree(m):
     """Return a tree representing the mobile with its total weight at the root.
