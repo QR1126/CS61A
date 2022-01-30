@@ -65,8 +65,15 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
-
-
+    def helper(res, index, flag):
+        if index == n:
+            return res
+        else:
+            if (num_eights(index) > 0 or index % 8 == 0):
+                return helper(res - flag, index + 1, - flag)
+            else:
+                return helper(res + flag, index + 1, flag)
+    return helper(1, 1, 1)
 
 def missing_digits(n):
     """Given a number a that is in sorted, increasing order,
