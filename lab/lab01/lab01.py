@@ -11,13 +11,12 @@ def falling(n, k):
     1
     """
     "*** YOUR CODE HERE ***"
-    res = 1
-    while k != 0:
+    res = 1;
+    while k > 0:
         res *= n
         n -= 1
         k -= 1
-    return res 
-
+    return res
 
 def sum_digits(y):
     """Sum all the digits of y.
@@ -33,7 +32,7 @@ def sum_digits(y):
     6
     """
     "*** YOUR CODE HERE ***"
-    res = 0 
+    res = 0
     if y < 10:
         return y % 10
     else:
@@ -41,6 +40,7 @@ def sum_digits(y):
             res += y % 10
             y //= 10
     return res
+
 
 def double_eights(n):
     """Return true if n has two eights in a row.
@@ -58,15 +58,13 @@ def double_eights(n):
     False
     """
     "*** YOUR CODE HERE ***"
-    if n <= 10:
-        return False
-    else:
-        while n != 0:
-            if n % 10 != 8:
-                n //= 10
-            else:
-                if (n // 10) % 10 == 8:
-                    return True
-                else:
-                    n //= 10
+    prev_eight = False
+    while n:
+        if n % 10 == 8 and prev_eight:
+            return True
+        elif n % 10 == 8:
+            prev_eight = True
+        else:
+            prev_eight = False
+        n //= 10
     return False
